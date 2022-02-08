@@ -1,6 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Login from "../views/Login.vue";
+import Registro from "../views/Registro.vue";
+import Calendario from "../views/Calendario.vue";
+import Confirmacion from "../views/Confirmacion.vue";
+import Estado from "../views/Estado.vue";
+
 
 Vue.use(VueRouter);
 
@@ -18,6 +24,31 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
+  },
+  {
+    path: "/registro",
+    name: "Registro",
+    component: Registro,
+  },
+  {
+    path: "/calendario",
+    name: "Calendario",
+    component: Calendario,
+  },
+  {
+    path: "/confirmacion",
+    name: "Confirmacion",
+    component: Confirmacion,
+  },
+  {
+    path: "/estado",
+    name: "Estado",
+    component: Estado,
   },
 ];
 
