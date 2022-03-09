@@ -1,52 +1,87 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Login</router-link> |
-      <router-link to="/calendario">Calendario</router-link> |
-      <router-link to="/confirmacion">Confirmacion</router-link> |
-      <router-link to="/estado">Estado</router-link>
-    </div>
-    <router-view />
+  <v-app>
+    <v-app-bar app color=#00a100 dark>
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>SEV App</v-toolbar-title>
+     
+    </v-app-bar>
+     <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class=" text--accent-4"
+        >
+          <v-list-item to="/" >
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Home</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to ="/login" >
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Login</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/registro" >
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Registro</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item to="/calendario">
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Calendario</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item  to="/confirmacion" >
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Confirmacion</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item  to="/estado" >
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Estado</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-main>
+      <router-view />
+    </v-main>
     <Footer/>
-  </div>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background-color: #ffff;
-  
-}
-
-#nav {
-  padding: 15px;
-  background-color: #00ff00;
-  box-shadow: 0 4px 10px 4px rgba(0, 0, 0, 0.3);
-}
-
-#nav a {
-  font-weight: bold;
-  color: #fff;
-}
-
-#nav a.router-link-exact-active {
-  color: #428db9;
-}
-</style>
-
 <script>
-import Footer from "./components/Footer.vue";
-
 export default {
-  
+  name: "App",
   components: {
-    Footer
-    
+    //Navbar: () => import("./components/Navbar"),
+    Footer: () => import("./components/Footer.vue"),
   },
+
+  data: () => ({
+      drawer: false,
+      group: null,
+    }),
 };
 </script>

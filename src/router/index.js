@@ -7,7 +7,6 @@ import Calendario from "../views/Calendario.vue";
 import Confirmacion from "../views/Confirmacion.vue";
 import Estado from "../views/Estado.vue";
 
-
 Vue.use(VueRouter);
 
 const routes = [

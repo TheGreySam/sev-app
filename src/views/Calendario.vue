@@ -1,18 +1,12 @@
 <template>
-<div>
   <div>
-    <h2>Programa tu carga</h2>
-    <form action class="form">
-      <DatePicker v-model="date" mode="dateTime" :minute-increment="5" />
-      <input class="form-submit" type="submit" value="Entrar" />
-    </form>
-    
-    
-    
-      
-    
-  </div>
-  
+    <div>
+      <h2>Programa tu carga</h2>
+      <form action class="form">
+        <DatePicker v-model="date" mode="dateTime" :minute-increment="5" />
+        <input class="form-submit" type="submit" value="Entrar" />
+      </form>
+    </div>
   </div>
 </template>
 
@@ -52,21 +46,22 @@ export default {
   background-image: none;
   border: 1px solid white;
   color: white;
-  &:focus {
-    outline: 0;
-    border-color: #1ab188;
-  }
+}
+.form-input:focus {
+  outline: 0;
+  border-color: #1ab188;
 }
 .form-submit {
-  background: #00ff00;
+  background: #00a100;
   border: none;
   color: white;
   margin-top: 1rem;
   padding: 1rem 0;
   cursor: pointer;
   transition: background 0.2s;
-  &:hover {
-    background: #0b9185;
-  }
+  
+}
+.form-submit:hover {
+  background: #0b9185;
 }
 </style>

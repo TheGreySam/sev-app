@@ -1,27 +1,34 @@
 <template>
-  <div class="home">
-    
-    <img alt="Vue logo" src="../assets/Logo_SEVc_Verde.png" width="90%" />
-    
-  </div>
+<v-parallax
+    dark
+    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+  >
+    <v-row
+      align="center"
+      justify="center"
+    >
+      <v-col
+        class="text-center"
+        cols="12"
+      >
+        <v-img img alt="Vue logo" src="../assets/Logo_SEVc_Verde.png"></v-img>
+      </v-col>
+    </v-row>
+  </v-parallax>
+ 
 </template>
 
 <script>
-
-
 export default {
   name: "Home",
-  components: {
-    
-  },
+  components: {},
 };
 </script>
 
 <style scoped>
 .home {
- padding-top: 40%;
- 
-  padding-bottom: 40%;
- 
+  padding-top: 10%;
+
+  padding-bottom: 10%;
 }
 </style>

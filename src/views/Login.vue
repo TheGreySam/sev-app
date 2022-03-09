@@ -18,7 +18,12 @@
           id="password"
           placeholder="Contraseña"
         />
-        <input class="form-submit" type="submit" value="Entrar" />
+        <input
+          class="form-submit"
+          type="submit"
+          value="Entrar"
+          @click="buttonLogin"
+        />
       </form>
     </div>
   </div>
@@ -48,9 +53,6 @@
   margin-top: 2rem;
   color: white;
   margin-bottom: 0.5rem;
-  &:first-of-type {
-    margin-top: 0rem;
-  }
 }
 .form-input {
   padding: 10px 15px;
@@ -58,10 +60,6 @@
   background-image: none;
   border: 1px solid white;
   color: white;
-  &:focus {
-    outline: 0;
-    border-color: #1ab188;
-  }
 }
 .form-submit {
   background: #00ff00;
@@ -71,9 +69,6 @@
   padding: 1rem 0;
   cursor: pointer;
   transition: background 0.2s;
-  &:hover {
-    background: #0b9185;
-  }
 }
 </style>
 
