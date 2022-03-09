@@ -64,10 +64,20 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-main>
+    <v-main >
+      <v-parallax 
+      dark
+    src="./assets/White_BG.jpg"
+    
+    >
+    
+
+    
       <router-view />
+      </v-parallax>
+      <Footer/>
     </v-main>
-    <Footer/>
+    
   </v-app>
 </template>
 

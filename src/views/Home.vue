@@ -1,9 +1,7 @@
 <template>
-<v-parallax
-    dark
-    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
-  >
+
     <v-row
+    class="home"
       align="center"
       justify="center"
     >
@@ -11,10 +9,21 @@
         class="text-center"
         cols="12"
       >
-        <v-img img alt="Vue logo" src="../assets/Logo_SEVc_Verde.png"></v-img>
+        <v-img img alt="Vue logo" src="../assets/Logo SEVd.svg"></v-img>
+        <h1 class="text-h4 font-weight-thin mb-4" color="green">
+          Sev App
+        </h1>
+        <v-container>
+          <h4 class="subheading">
+          Recarga tu vehiculo en todas nuestras estaciones de carga
+        </h4>
+
+        </v-container>
+        <v-spacer></v-spacer>
       </v-col>
+      
     </v-row>
-  </v-parallax>
+
  
 </template>
 
@@ -27,8 +36,9 @@ export default {
 
 <style scoped>
 .home {
-  padding-top: 10%;
+  color: green;
+  padding-top: 20%;
 
-  padding-bottom: 10%;
+  padding-bottom: 20%;
 }
 </style>
