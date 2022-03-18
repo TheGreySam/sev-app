@@ -1,7 +1,10 @@
 <template>
   <div>
     <div>
-      <h2>Programa tu carga</h2>
+      <v-toolbar dark color="#00a100">
+        <v-toolbar-title>Programa tu carga </v-toolbar-title>
+      </v-toolbar>
+
       <form action class="form">
         <DatePicker v-model="date" mode="dateTime" :minute-increment="5" />
         <input class="form-submit" type="submit" value="Entrar" />
@@ -59,7 +62,6 @@ export default {
   padding: 1rem 0;
   cursor: pointer;
   transition: background 0.2s;
-  
 }
 .form-submit:hover {
   background: #0b9185;
