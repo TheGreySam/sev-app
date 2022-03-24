@@ -55,13 +55,15 @@
                       isRegister ? stateObj.register.name : stateObj.login.name
                     }}</v-btn
                   >
-                  <div
-                    class="grey--text mt-4"
+                  <v-btn
+                    class="mt-4"
+                    primary
                     v-on:click="isRegister = !isRegister"
                   >
                     {{ toggleMessage }}
-                  </div>
+                  </v-btn>
                 </form>
+                
               </v-card-text>
             </v-card>
           </v-flex>
@@ -109,7 +111,7 @@ export default {
       console.warn(result);
       if (result.data.LoginRowCount == null) {
         console.log("Error");
-        alert("Error");
+        alert("Usuario o contraseña incorrecta");
       } else {
         this.$router.replace({
           name: "Home",
@@ -117,16 +119,28 @@ export default {
             username: username,
           },
         });
+        alert(`Bienvenido ${this.username}`);
       }
     },
-    register() {
-      if (this.password == this.confirmPassword) {
-        this.isRegister = false;
-        this.errorMessage = "";
-        this.$refs.form.reset();
-      } else {
-        this.errorMessage = "password did not match";
-      }
+    //register() {
+    //  if (this.password == this.confirmPassword) {
+    //    this.isRegister = false;
+    //    this.errorMessage = "";
+    //    this.$refs.form.reset();
+    //  } else {
+    //    this.errorMessage = "password did not match";
+    //  }
+    //},
+    async register() {
+      await fetch("http://bus.biznet.cl:8280/SEV_usuarios_roles_op_insert_usuarios_app", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "this.username",
+          email: "this.email",
+          password: "this.password",
+        }),
+      });
     },
   },
   computed: {

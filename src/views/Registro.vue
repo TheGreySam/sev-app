@@ -5,64 +5,51 @@
         <v-layout align-center justify-center>
           <v-flex xs12 sm8 md4>
             <v-card class="elevation-12">
-              <v-toolbar dark color="primary">
+              <v-toolbar dark color="#00a100">
                 <v-toolbar-title
-                  >{{
-                    isRegister ? stateObj.register.name : stateObj.login.name
-                  }}
-                  form</v-toolbar-title
-                >
+                  >
+                </v-toolbar-title>
               </v-toolbar>
               <v-card-text>
-                <form
-                  ref="form"
-                  @submit.prevent="isRegister ? register() : login()"
-                >
-                  <v-text-field
-                    v-model="username"
-                    name="username"
-                    label="Username"
-                    type="text"
-                    placeholder="username"
-                    required
-                  ></v-text-field>
+          <form
+            @submit.prevent="registerUser"
+            class="bg-white px-6 py-8 rounded shadow-md text-black w-full"
+          >
+            <h1 class="mb-8 text-3xl text-center">Sign up</h1>
+            <v-text-field
+              type="text"
+              class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+              placeholder="Full Name"
+              v-model="username"
+              required
+            />
 
-                  <v-text-field
-                    v-model="password"
-                    name="password"
-                    label="Password"
-                    type="password"
-                    placeholder="password"
-                    required
-                  ></v-text-field>
+            <v-text-field
+              type="text"
+              class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+              placeholder="Email"
+              v-model="email"
+              required
+            />
 
-                  <v-text-field
-                    v-if="isRegister"
-                    v-model="confirmPassword"
-                    name="confirmPassword"
-                    label="Confirm Password"
-                    type="password"
-                    placeholder="cocnfirm password"
-                    required
-                  ></v-text-field>
-                  <div class="red--text">{{ errorMessage }}</div>
-                  <v-btn
-                    type="submit"
-                    class="mt-4"
-                    color="primary"
-                    value="log in"
-                    >{{
-                      isRegister ? stateObj.register.name : stateObj.login.name
-                    }}</v-btn
-                  >
-                  <div
-                    class="grey--text mt-4"
-                    v-on:click="isRegister = !isRegister"
-                  >
-                    {{ toggleMessage }}
-                  </div>
-                </form>
-              </v-card-text>
+            <v-text-field
+              type="password"
+              class="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"
+              placeholder="Password"
+              v-model="password"
+              required
+            />
+            <v-btn
+              type="submit"
+              class="mt-4"
+                    color="#00a100"
+                    dark
+                   
+            >
+              Create Account
+            </v-btn>
+          </form>
+         </v-card-text>
             </v-card>
           </v-flex>
         </v-layout>
@@ -70,49 +57,27 @@
     </v-main>
   </v-app>
 </template>
-
-<script>
+ <script>
 export default {
-  name: "App",
+  name: "register",
   data() {
     return {
       username: "",
+      email: "",
       password: "",
-      confirmPassword: "",
-      isRegister: false,
-      errorMessage: "",
-      stateObj: {
-        register: {
-          name: "Register",
-          message: "Aleady have an Acoount? login.",
-        },
-        login: {
-          name: "Login",
-          message: "Register",
-        },
-      },
     };
   },
   methods: {
-    login() {
-      const { username } = this;
-      console.log(username + "logged in");
-    },
-    register() {
-      if (this.password == this.confirmPassword) {
-        this.isRegister = false;
-        this.errorMessage = "";
-        this.$refs.form.reset();
-      } else {
-        this.errorMessage = "password did not match";
-      }
-    },
-  },
-  computed: {
-    toggleMessage: function () {
-      return this.isRegister
-        ? this.stateObj.register.message
-        : this.stateObj.login.message;
+    async registerUser() {
+      await fetch("http://bus.biznet.cl:8280/SEV_usuarios_roles_op_insert_usuarios_app", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "this.username",
+          email: "this.email",
+          password: "this.password",
+        }),
+      });
     },
   },
 };
